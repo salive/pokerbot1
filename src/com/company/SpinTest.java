@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 public class SpinTest {
 
-    public static int stake = 3, winnings = 0, prize = 0, bankroll = 100,
+    public static int stake = 7, winnings = 0, prize = 0, bankroll = 100,
             x2count = 0, x4count=0,x6count=0, x10count=0, x25count=0, x120count=0, x250count=0, x3600count=0, streak = 0, biggestStreak=0;
     private static int pot;
     public static int sb, bb;
@@ -78,7 +78,7 @@ public class SpinTest {
 
                     pocketWeight = Main.player1.getPocket().get(0).getRank() + Main.player1.getPocket().get(1).getRank();
                     plArr = new Player[3];
-                    if ((pocketWeight >= 10)
+                    if ((pocketWeight >= 18)
                             || ((pocketWeight >= 16) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
                             || ((pocketWeight >= 10) &&(Main.player1.getPocket().get(0).getRank() == Main.player1.getPocket().get(1).getRank())))
                     {
@@ -193,9 +193,9 @@ public class SpinTest {
                             pot += getDealer().getStack();
                             getDealer().setStackDirect(0);
                         }
-                        if ((pocketWeight >= 14)
+                        if ((pocketWeight >= 12)
                                 ||
-                                ((pocketWeight >= 12) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
+                                ((pocketWeight >= 10) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
                                 ||
                                 (Main.player1.getPocket().get(0).getRank() == Main.player1.getPocket().get(1).getRank())) {
 
@@ -279,9 +279,9 @@ public class SpinTest {
                             getDealer().setStackDirect(0);
                         }
                         pocketWeight = Main.player1.getPocket().get(0).getRank() + Main.player1.getPocket().get(1).getRank();
-                        if ((pocketWeight >= 14)
+                        if ((pocketWeight >= 12)
                                 ||
-                                ((pocketWeight >= 12) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
+                                ((pocketWeight >= 10) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
                                 ||
                                 (Main.player1.getPocket().get(0).getRank() == Main.player1.getPocket().get(1).getRank())) {
 
