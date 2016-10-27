@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.Random;
 public class SpinTest {
 
-
-    private static int pot, side_pot;
+    public static int stake = 3, winnings = 0, prize = 0, bankroll = 100,
+            x2count = 0, x4count=0,x6count=0, x10count=0, x25count=0, x120count=0, x250count=0, x3600count=0, streak = 0, biggestStreak=0;
+    private static int pot;
     public static int sb, bb;
     static String[] combs  = {"high card", "one pair", "two pair", "three of a kind", "straight", "flush",
             "full house", "four of a kind", "flush straight", "royal flush"};
@@ -50,8 +51,18 @@ public class SpinTest {
     public static void Round ()
     {
 
-
+        Random randomGenerator = new Random();
+        int r = randomGenerator.nextInt(100001);
+        if ((r >=0) && (r<70518)) {x2count++;prize = stake*2;}
+        else if ((r>=70518) && (r < 91884)) {x4count++;prize = stake*4;}
+        else if ((r>=91884) && (r < 99384)) {x6count++;prize = stake*6;}
+        else if ((r>=99384) && (r < 99884)) {x10count++;prize = stake*10;}
+        else if ((r>=99884) && (r < 99984)) {x25count++;prize = stake*25;}
+        else if ((r>=99984) && (r < 99994)) {x120count++;prize = stake*120;}
+        else if ((r>=99994) && (r < 99999)) {x250count++;prize = stake*250;}
+        else {x3600count++; prize = stake*3600;}
         Player lucky = new Player();
+        bankroll-=stake;
         while (!gameOver) {
             SpinTest.pot = 0;
             Player[] plArr;
@@ -67,8 +78,8 @@ public class SpinTest {
 
                     pocketWeight = Main.player1.getPocket().get(0).getRank() + Main.player1.getPocket().get(1).getRank();
                     plArr = new Player[3];
-                    if ((pocketWeight >= 19)
-                            || ((pocketWeight >= 20) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
+                    if ((pocketWeight >= 10)
+                            || ((pocketWeight >= 16) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
                             || ((pocketWeight >= 10) &&(Main.player1.getPocket().get(0).getRank() == Main.player1.getPocket().get(1).getRank())))
                     {
                         plArr = new Player[3];
@@ -327,6 +338,7 @@ public class SpinTest {
                 gameOver = true;
                // System.out.println("Game over");
                 Main.player1.lose = true;
+                streak++;
             }
             if ((Main.player2.getStack() <= 0) && (!Main.player2.lose)) {
                 playersLeft -= 1;
@@ -341,6 +353,9 @@ public class SpinTest {
             if (playersLeft == 1) {
                 gameOver = true;
                 heroWinCount += 1;
+                bankroll+=prize;
+                if (streak > biggestStreak) biggestStreak=streak;
+                streak = 0;
                 //System.out.println("Hero wins");
             }
         }
@@ -353,6 +368,7 @@ public class SpinTest {
             Main.player3.lose = false;
             gameOver = false;
             Main.deck.fill();
+            prize = 0;
 
 
 

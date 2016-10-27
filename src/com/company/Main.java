@@ -37,9 +37,9 @@ public class Main {
             //s = reader.readLine();
             //if (s.equals("next"))
             //{
-                int iters = 10000;
+                int iters = 100000;
                 double p;
-                for (int i=1;i<iters; i++) {
+                for (int i=1;i<iters+1; i++) {
                     SpinTest.Round();
 
 
@@ -49,7 +49,22 @@ public class Main {
                 }
                 double percent = (SpinTest.heroWinCount*100/iters);
                 System.out.println(SpinTest.heroWinCount);
+
                 System.out.println(percent);
+                System.out.println("Турниров x2: "+SpinTest.x2count);
+                System.out.println("Турниров x4: "+SpinTest.x4count);
+                System.out.println("Турниров x6: "+SpinTest.x6count);
+                System.out.println("Турниров x10: "+SpinTest.x10count);
+                System.out.println("Турниров x25: "+SpinTest.x25count);
+                System.out.println("Турниров x120: "+SpinTest.x120count);
+                System.out.println("Турниров x250: "+SpinTest.x250count);
+                System.out.println("Турниров x3600: "+SpinTest.x3600count);
+
+                System.out.println("Bankroll: "+SpinTest.bankroll);
+
+                System.out.println("Biggest streak was: "+SpinTest.biggestStreak);
+
+
             //}
             //if (s.equals("exit")) break;
             //if (s.equals("cl"))
