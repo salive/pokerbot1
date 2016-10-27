@@ -37,7 +37,7 @@ public class Main {
             //s = reader.readLine();
             //if (s.equals("next"))
             //{
-                int iters = 100000;
+                int iters = 100;
                 double p;
                 for (int i=1;i<iters+1; i++) {
                     SpinTest.Round();

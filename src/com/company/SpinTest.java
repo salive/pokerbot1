@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 public class SpinTest {
 
-    public static int stake = 7, winnings = 0, prize = 0, bankroll = 100,
+    public static int stake = 1, winnings = 0, prize = 0, bankroll = 100,
             x2count = 0, x4count=0,x6count=0, x10count=0, x25count=0, x120count=0, x250count=0, x3600count=0, streak = 0, biggestStreak=0;
     private static int pot;
     public static int sb, bb;
@@ -421,17 +421,20 @@ public class SpinTest {
 
                 else if ((args[0].getComb() > args[1].getComb() && (args[0].getComb() == args[2].getComb()))) {
                     if (args[0].getHandval() > args[2].getHandval()) return args[0];
-                    if (args[0].getHandval() <= args[2].getHandval()) return args[2];
+                    if (args[0].getHandval() < args[2].getHandval()) return args[2];
+                    if (args[0].getHandval() == args[2].getHandval()) {split=true;return args[2];};
 
                 }
                 else if ((args[1].getComb() > args[0].getComb() && (args[1].getComb() == args[2].getComb()))) {
                     if (args[1].getHandval() > args[2].getHandval()) return args[1];
-                    if (args[1].getHandval() <= args[2].getHandval()) return args[2];
+                    if (args[1].getHandval() < args[2].getHandval()) return args[2];
+                    if (args[1].getHandval() == args[2].getHandval()) {split=true;return args[2];};
 
                 }
                 else if ((args[0].getComb() > args[2].getComb() && (args[0].getComb() == args[1].getComb()))) {
                     if (args[0].getHandval() > args[1].getHandval()) return args[0];
                     if (args[0].getHandval() <= args[1].getHandval()) return args[1];
+                    if (args[0].getHandval() == args[1].getHandval()) {split=true;return args[1];};
 
                 }
                 else if ((args[0].getComb() == args[2].getComb() && (args[0].getComb() == args[1].getComb()))) {
