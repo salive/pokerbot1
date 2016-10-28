@@ -37,7 +37,7 @@ public class Main {
             //s = reader.readLine();
             //if (s.equals("next"))
             //{
-                int iters = 100;
+                int iters = 1000000;
                 double p;
                 for (int i=1;i<iters+1; i++) {
                     SpinTest.Round();
@@ -58,7 +58,7 @@ public class Main {
                 System.out.println("Турниров x25: "+SpinTest.x25count);
                 System.out.println("Турниров x120: "+SpinTest.x120count);
                 System.out.println("Турниров x250: "+SpinTest.x250count);
-                System.out.println("Турниров x3600: "+SpinTest.x3600count);
+                System.out.println("Турниров x12000: "+SpinTest.x12000count);
 
                 System.out.println("Bankroll: "+SpinTest.bankroll);
 
