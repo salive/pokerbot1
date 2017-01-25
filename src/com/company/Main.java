@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 
@@ -20,6 +21,8 @@ public class Main {
                 "flush", "four of a kind", "flush straight", "royal flush"};
         String[] stages = {"preflop", "flop", "turn", "river"};
         String[] positions = {"EP", "MP", "LP"};
+        Date d1, d2;
+        long db1, db2;
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Random randomGenerator = new Random();
@@ -34,11 +37,10 @@ public class Main {
 
             SpinTest.sb = 10;
             SpinTest.bb = 20;
-            //s = reader.readLine();
-            //if (s.equals("next"))
-            //{
-                int iters = 1000;
+            int iters = 1000;
                 double p;
+                d1 = new Date();
+                db1 = d1.getTime();
                 for (int i=1;i<iters+1; i++) {
                     SpinTest.Round();
 
@@ -47,9 +49,10 @@ public class Main {
 
 
                 }
+                d2 = new Date();
+                db2 = d2.getTime();
                 double percent = (SpinTest.heroWinCount*100/iters);
                 System.out.println(SpinTest.heroWinCount);
-
                 System.out.println(percent);
                 System.out.println("Турниров x2: "+SpinTest.x2count);
                 System.out.println("Турниров x4: "+SpinTest.x4count);
@@ -63,6 +66,8 @@ public class Main {
                 System.out.println("Bankroll: "+SpinTest.bankroll);
 
                 System.out.println("Biggest streak was: "+SpinTest.biggestStreak);
+
+                System.out.println(db2-db1);
 
 
             //}

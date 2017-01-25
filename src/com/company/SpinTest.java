@@ -80,6 +80,83 @@ public class SpinTest {
             isSBFolds = false; isDealerFolds=false; isBBFolds=false;
             switch (playersLeft) {
                 case 3:
+                    Main.player1.setPocket(Card.generate(), Card.generate());
+                    Main.player2.setPocket(Card.generate(), Card.generate());
+                    Main.player3.setPocket(Card.generate(), Card.generate());
+                    Main.player1.hand = new Hand();
+                    Main.player2.hand = new Hand();
+                    Main.player3.hand = new Hand();
+
+                    pocketWeight = Main.player1.getPocket().get(0).getRank() + Main.player1.getPocket().get(1).getRank();
+                    plArr = new Player[3];
+                    if ((pocketWeight >= 19)
+                            || ((pocketWeight >= 20) && (Main.player1.getPocket().get(0).getSuit() == Main.player1.getPocket().get(1).getSuit()))
+                            || ((pocketWeight >= 10) &&(Main.player1.getPocket().get(0).getRank() == Main.player1.getPocket().get(1).getRank())))
+                    {
+                        plArr = new Player[3];
+                        plArr[0] = Main.player1;
+                        plArr[1] = Main.player2;
+                        plArr[2] = Main.player3;
+                        // System.out.println("Hero raised");
+                        if ((getDealer().getStack() <= getSB().getStack()) && (getDealer().getStack() <= getBB().getStack())) {
+                            pot += ((3 * getDealer().getStack()));
+                            getSB().setStack(-getDealer().getStack());
+                            getBB().setStack(-getDealer().getStack());
+                            getDealer().setStack(-getDealer().getStack());
+                        } else if ((getSB().getStack() <= getDealer().getStack()) && (getSB().getStack() <= getBB().getStack())) {
+                            pot += ((3 * getSB().getStack()));
+                            getDealer().setStack(-getSB().getStack());
+                            getBB().setStack(-getSB().getStack());
+                            getSB().setStack(-getSB().getStack());
+                        } else {
+                            pot += ((3 * getBB().getStack()));
+                            getSB().setStack(-getBB().getStack());
+                            getDealer().setStack(-getBB().getStack());
+                            getBB().setStack(-getBB().getStack());
+                        }
+
+                    } else {
+                        plArr = new Player[2];
+                        plArr[0] = Main.player2;
+                        plArr[1] = Main.player3;
+                        //System.out.println("Hero folded");
+                    }
+                    if (getSB().getStack() >= sb) {
+                        getSB().setStack(-sb);
+                        pot += sb;
+                    } else {
+                        pot += getSB().getStack();
+                        getSB().setStackDirect(0);
+                    }
+                    if (getBB().getStack() >= bb) {
+                        getBB().setStack(-bb);
+                        pot += bb;
+                    } else {
+                        pot += getBB().getStack();
+                        getBB().setStackDirect(0);
+                    }
+
+                    Board.addCards(Card.generate());
+                    Board.addCards(Card.generate());
+                    Board.addCards(Card.generate());
+                    Board.addCards(Card.generate());
+                    Board.addCards(Card.generate());
+                    lucky = winner(plArr);
+                    if(!split ) lucky.setStack(+pot);
+                    else{
+                        Main.player2.setStack((int)Math.round(pot/2));
+                        Main.player3.setStack((int)Math.round(pot/2));
+                        split = false;
+                    }
+
+                    Board.clearBoard();
+                    Main.deck.fill();
+                    if (Main.player1.getPosition() != 0) Main.player1.setPosition(Main.player1.getPosition() - 1);
+                    else Main.player1.setPosition(2);
+                    if (Main.player2.getPosition() != 0) Main.player2.setPosition(Main.player2.getPosition() - 1);
+                    else Main.player2.setPosition(2);
+                    if (Main.player3.getPosition() != 0) Main.player3.setPosition(Main.player3.getPosition() - 1);
+                    else Main.player3.setPosition(2);
                     break;
                 case 2:
 
