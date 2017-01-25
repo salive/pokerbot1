@@ -13,7 +13,6 @@ public class Table {
     private ArrayList<Card> pocket;
     private Board board;
     private int BB;
-    private int op1_act, op2_act;
     public void setId(int id){
         this.id = id;
     }
@@ -72,17 +71,6 @@ public class Table {
     public void setBB(int BB) {
         this.BB = BB;
     }
-    public int getOp1_act() {
-        return op1_act;
-    }
-    public int getOp2_act() {
-        return op2_act;
-    }
-    public void setOp1_act(int op1_act) {
-        this.op1_act = op1_act;
-    }
-    public void setOp2_act(int op2_act) {
-        this.op2_act = op2_act;
-    }
+
 }
 

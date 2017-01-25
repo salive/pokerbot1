@@ -48,59 +48,6 @@ public class Round {
 
     public static void Action()
     {
-        Hand hand = new Hand();
-        hand.addAll(pocket);
-        hand.addAll(Board.getBoard());
-        switch (Round.stage){
-            //preflop
-            case 0:
-                Action.setAction(0);
-                Integer[] tmpArr = new Integer[2];
-                tmpArr[0] = pocket.get(0).getRank();
-                tmpArr[1] = pocket.get(1).getRank();
-                /*switch(position){
-                    case 0:
-                        for(Integer[] arr : Charts.noRaiseEp){
-                            if(HandEval.isEqual(tmpArr, arr)) Action.setAction(2);
-                        }
-                        break;
-                    case 1:
-                        for(Integer[] arr : Charts.noRaiseMp){
-                            if(HandEval.isEqual(tmpArr, arr)) Action.setAction(2);
-                        }
-                        break;
-                    case 2:
-                        for(Integer[] arr : Charts.noRaiseLp){
-                            if(HandEval.isEqual(tmpArr, arr)) Action.setAction(2);
-                        }
-                        break;
-
-                }*/
-                Action.Move();
-                Action.setAction(0);
-                break;
-            //flop
-            case 1:
-                if (HandEval.evaluate(hand) > 0)
-                    Action.setAction(2);
-                else Action.setAction(0);
-                Action.Move();
-                break;
-            case 2:
-                if (HandEval.evaluate(hand) > 1)
-                    Action.setAction(2);
-                else Action.setAction(0);
-                Action.Move();
-                break;
-            case 3:
-                if (HandEval.evaluate(hand) > 2)
-                    Action.setAction(2);
-                else Action.setAction(0);
-                Action.Move();
-                break;
-
-
-        }
 
 
     }
