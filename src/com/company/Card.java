@@ -127,4 +127,11 @@ public class Card
         rank = _Rank;
         suit = _Suit;
     }
+
+    public static int convertToKey(ArrayList<Card> c){             //конвертирует объект карты в ключ для поиска по чарту
+        String tmp="";
+        if ((c.get(0).getRank())>=(c.get(1).getRank())) tmp+=c.get(0).getRank()+c.get(1).getRank();
+        else tmp+=c.get(1).getRank()+c.get(0).getRank();
+        return Integer.parseInt(tmp);
+    }
 }

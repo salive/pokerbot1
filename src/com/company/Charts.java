@@ -6,149 +6,61 @@ import java.util.*;
  * Created by jchuprakov on 24.08.2016.
  */
 public class Charts {
-    public static ArrayList<Integer[]> noRaise = new ArrayList<Integer[]>();
-    public static ArrayList<Integer[]> afterRaise = new ArrayList<Integer[]>();
-    public static ArrayList<Integer[]> afterReRaise = new ArrayList<Integer[]>();
-
-
-
-    public static void initialize()
+    public static HashMap<Integer, ArrayList<Integer>> chart;
+    public Charts()
     {
+        chart = new HashMap<>();
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i=0;i<12;i++){
+            arr.add(i);
+        }
+        chart.put(1212, arr); //AA
+        chart.put(1111, arr); //KK
+        chart.put(1010, arr); //QQ
+        chart.put(99, arr); //JJ
+        chart.put(88, arr); //TT
+        chart.put(77, arr); //99
+        chart.put(1211, arr); //AKo
+        chart.put(1210, arr); //AQo
+        chart.put(-1211, arr); //AKs
+        chart.put(-1210, arr); //AQs
+        chart.put(-129, arr); //AJs
 
+        arr.remove(arr.size()-1);
+        chart.put(129,arr); //AJo
+        chart.put(66, arr); //88
+        chart.put(55, arr); //77
 
-        //77
-        Integer[] arr = new Integer[2];
-        arr[0] = 5;
-        arr[1] = 5;
-        noRaise.add(arr);
-
-        //88
-        arr = new Integer[2];
-        arr[0] = 6;
-        arr[1] = 6;
-        noRaise.add(arr);
-
-
-        //99
-        arr = new Integer[2];
-        arr[0] = 7;
-        arr[1] = 7;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-
-        //TT
-        arr = new Integer[2];
-        arr[0] = 8;
-        arr[1] = 8;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-        //JJ
-        arr = new Integer[2];
-        arr[0] = 9;
-        arr[1] = 9;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-        //QQ
-        arr = new Integer[2];
-        arr[0] = 10;
-        arr[1] = 10;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-        //KK
-        arr = new Integer[2];
-        arr[0] = 11;
-        arr[1] = 11;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-        //AA
-        arr = new Integer[2];
-        arr[0] = 12;
-        arr[1] = 12;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-        // AK
-        arr = new Integer[2];
-        arr[0] = 11;
-        arr[1] = 12;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-        afterRaise.add(arr);
-
-        //AK
-        arr = new Integer[2];
-        arr[0] = 12;
-        arr[1] = 11;
-        noRaise.add(arr);
-
-        //AQ
-        arr = new Integer[2];
-        arr[0] = 12;
-        arr[1] = 10;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-        arr = new Integer[2];
-        arr[0] = 10;
-        arr[1] = 12;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-
-        //AJ
-        arr = new Integer[2];
-        arr[0] = 12;
-        arr[1] = 9;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-        arr = new Integer[2];
-        arr[0] = 9;
-        arr[1] = 12;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-
-        //AT
-        arr = new Integer[2];
-        arr[0] = 12;
-        arr[1] = 8;
-        noRaise.add(arr);
-        afterRaise.add(arr);
-
-
-        arr = new Integer[2];
-        arr[0] = 8;
-        arr[1] = 12;
-        noRaise.add(arr);
-        afterRaise.add(arr);
+        arr.remove(arr.size()-1);
 
 
 
-        ///KQ
-        arr = new Integer[2];
-        arr[0] = 11;
-        arr[1] = 10;
-        noRaise.add(arr);
-        afterRaise.add(arr);
 
-
-        arr = new Integer[2];
-        arr[0] = 10;
-        arr[1] = 11;
-        noRaise.add(arr);
-        afterRaise.add(arr);
 
 
 
 
 
     }
+
+    public static boolean check() {
+        // 0 - button first to act, raise
+        // 1 - button first to act, call push or raise
+        // 2 - sb, buuton raises we call
+        // 3 - sb, button raises, we push
+        // 4 - bb, button raises, sb folds, call
+        // 5 - bb, button raises, sb folds, push
+        // 6 - bb, button folds, sb limps, we raise
+        // 7 - bb, button folds, sb limps, we raise and call push
+        // 8 - bb, button folds, sb raise, we call
+        // 9 - bb, button folds, sb raise, we push
+        // 10 - sb, bb, call openpush from anybody
+        // 11 - sb, bb, call openpush from both
+    }
+
+
+
+
 
 
 

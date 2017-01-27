@@ -35,7 +35,7 @@ public class Main {
         String st = new String();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int tmp;
-        ArrayList<Card> tmp_arr = new ArrayList<>();
+
             while (!st.equals("exit")) {
 
                     st = reader.readLine();
@@ -44,8 +44,8 @@ public class Main {
                     System.out.println("Number:");
                     tmp = Integer.parseInt(reader.readLine());
                     if (!tables.containsKey(tmp)) {
-
                         Table tb = new Table();
+                        ArrayList<Card> tmp_arr = new ArrayList<>();
                         tb.setId(tmp);
                         System.out.println("Stage");
                         tb.setStage(Integer.parseInt(reader.readLine()));
@@ -92,6 +92,22 @@ public class Main {
             }
 
         }
+
+
+    public static int Action(Table tb) {
+        switch (tb.getStage()) {
+            case 0:                                    //preflop
+                switch (tb.last_action) {
+                case 0:                                //last action - fold
+                    switch (tb.getPosition()) {
+                        case 0:                        //on button
+
+
+                    }
+            }
+        }
+        return 0;
+
     }
 
 }

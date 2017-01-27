@@ -21,8 +21,9 @@ public class Table {
     public int getId(){
         return this.id;
     }
+    public int last_action;
     public Table() {
-
+        last_action = 0;
     }
     public void setPlayers_left(int players_left) {
         this.players_left = players_left;
