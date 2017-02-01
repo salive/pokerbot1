@@ -43,7 +43,7 @@ public class Charts {
 
     }
 
-    public static boolean check() {
+    public static boolean check(int key, int ch) {
         // 0 - button first to act, raise
         // 1 - button first to act, call push or raise
         // 2 - sb, buuton raises we call
@@ -56,6 +56,9 @@ public class Charts {
         // 9 - bb, button folds, sb raise, we push
         // 10 - sb, bb, call openpush from anybody
         // 11 - sb, bb, call openpush from both
+
+        if(chart.get(key).contains(ch)) return true;
+        else return false;
     }
 
 

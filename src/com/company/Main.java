@@ -101,6 +101,21 @@ public class Main {
                 case 0:                                //last action - fold
                     switch (tb.getPosition()) {
                         case 0:                        //on button
+                            if(Charts.check(Card.convertToKey(tb.getPocket()),0)) {tb.last_action=3; return 3;}
+                            else {tb.last_action = 0; return 0;}
+                        case 1:                        // on SB
+                            switch (tb.getOp2_action())
+                            {
+                                case 0:
+                                    if(Charts.check(Card.convertToKey(tb.getPocket()),0)) {tb.last_action=3; return 3;}
+                                    else {tb.last_action = 0; return 0;}
+
+                                case 2:
+                                    if(Charts.check(Card.convertToKey(tb.getPocket()),0)) {tb.last_action=3; return 3;}
+                                    else {tb.last_action = 0; return 0;}
+
+
+                            }
 
 
                     }
