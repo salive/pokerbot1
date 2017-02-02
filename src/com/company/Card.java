@@ -132,6 +132,7 @@ public class Card
         String tmp="";
         if ((c.get(0).getRank())>=(c.get(1).getRank())) tmp+=c.get(0).getRank()+c.get(1).getRank();
         else tmp+=c.get(1).getRank()+c.get(0).getRank();
+        if(c.get(0).getSuit()==c.get(1).getSuit()) tmp = "-"+tmp;
         return Integer.parseInt(tmp);
     }
 }

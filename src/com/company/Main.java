@@ -113,9 +113,51 @@ public class Main {
                                 case 2:
                                     if(Charts.check(Card.convertToKey(tb.getPocket()),0)) {tb.last_action=3; return 3;}
                                     else {tb.last_action = 0; return 0;}
-
-
+                                case 3:
+                                    if((Charts.check(Card.convertToKey(tb.getPocket()),2))&&(!Charts.check(Card.convertToKey(tb.getPocket()),3))) {tb.last_action=1; return 1;}
+                                    else if(Charts.check(Card.convertToKey(tb.getPocket()),3)) {tb.last_action = 4; return 4;}
+                                    else {tb.last_action = 0; return 0;}
+                                case 4:
+                                    if(Charts.check(Card.convertToKey(tb.getPocket()),10)){tb.last_action = 4; return 4;}
+                                    else {tb.last_action = 0; return 0;}
                             }
+                            break;
+                        case 2:                           //on BB
+                            if (tb.getOp1_action()==0){   // Button folds
+                                switch (tb.getOp2_action()) {
+                                    case 2:
+                                        if (Charts.check(Card.convertToKey(tb.getPocket()),6)) {tb.last_action = 3; return 3;}
+                                        else {tb.last_action=1; return 1;}
+
+                                    case 3:
+                                        if((Charts.check(Card.convertToKey(tb.getPocket()),8))&&(!Charts.check(Card.convertToKey(tb.getPocket()),9))) {tb.last_action = 2; return 2;}
+                                        else if (Charts.check(Card.convertToKey(tb.getPocket()),9)) {tb.last_action = 4; return 4;}
+                                        else {tb.last_action =0; return 0;}
+                                    case 4:
+                                        if(Charts.check(Card.convertToKey(tb.getPocket()),10)){tb.last_action = 4; return 4;}
+                                        else {tb.last_action = 0; return 0;}
+                                }
+                            }
+                            if ((tb.getOp1_action()==2)&& (tb.getOp2_action()==2)) {tb.last_action=1; return 1;} // button and sb calls
+                            if (tb.getOp1_action()>2)                                                            //button raises
+                            {
+                                switch (tb.getOp2_action())
+                                {
+                                    case 0:
+                                        if ((Charts.check(Card.convertToKey(tb.getPocket()),4))&&(!Charts.check(Card.convertToKey(tb.getPocket()),5))) {tb.last_action = 1; return 1;}
+                                        else if (Charts.check(Card.convertToKey(tb.getPocket()),5)) {tb.last_action = 4; return 4;}
+                                        else {tb.last_action= 0; return 0;}
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                    case 4:
+                                        if (Charts.check(Card.convertToKey(tb.getPocket()),11)) {tb.last_action = 4; return 4;}
+                                        else {tb.last_action = 0; return 0;}
+
+
+                                }
+                            }
+
 
 
                     }
