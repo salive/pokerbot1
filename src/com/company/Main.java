@@ -19,34 +19,69 @@ public class Main {
     public static Player player1 = new Player("Hero");
     public static Player player2 = new Player("player2");
     public static Player player3 = new Player("player3");
-    public static HashMap<Integer, Table> tables = new HashMap<Integer, Table>();
+    public static HashMap<Integer, Table> tables = new HashMap<>();
     public static void main(String[] args) throws Exception
     {
-        String[] combs  = {"high card", "one pair", "two pair", "three of a kind", "full house", "straight",
-                "flush", "four of a kind", "flush straight", "royal flush"};
+        String[] combs  = {"high card", "one pair", "two pair", "three of a kind",  "straight",
+                "flush", "full house", "four of a kind", "flush straight", "royal flush"};
         String[] stages = {"preflop", "flop", "turn", "river"};
         String[] positions = {"EP", "MP", "LP"};
         Date d1, d2;
-        long db1, db2;
-        player1.setPocket(Card.convert("Ah"),Card.convert("5s") );
-        player2.setPocket(Card.generate(), Card.generate());
-        Board.addCards(Card.generate());
-        Board.addCards(Card.generate());
-        Board.addCards(Card.generate());
-        Board.addCards(Card.generate());
-        Board.addCards(Card.generate());
-        hand1.addAll(player1.getPocket());
-        hand1.addAll(Board.getBoard());
-        hand2.addAll(player2.getPocket());
-        hand2.addAll(Board.getBoard());
-        System.out.println("Player1 pocket "+player1.getPocket());
-        System.out.println("Player2 pocket "+player2.getPocket());
-        System.out.println("Board is "+Board.getBoard());
-        System.out.println("Player1 have a "+combs[HandEval.evaluate(hand1)]);
-        System.out.println("Player1 besthand "+HandEval.);
-        System.out.println("Player2 have a "+combs[HandEval.evaluate(hand2)]);
+        long db1, db2,p1,p2;
+        int bestweight, weight, h1, h2, c1=0, c2=0, draw=0;
+        player1.setPocket(Card.convert("Ah"),Card.convert("9s") );
+        // не убираются из деки карты кармана, некорректно считается победитель при одинаковой комбе. МЕДЛЕННО
+        d1 = new Date();
+        db1 = d1.getTime();
+        for(int i=0; i <100000;i++) {
+            player2.setPocket(Card.generate(), Card.generate());
+            Board.addCards(Card.generate());
+            Board.addCards(Card.generate());
+            Board.addCards(Card.generate());
+            Board.addCards(Card.generate());
+            Board.addCards(Card.generate());
+            hand1.addAll(player1.getPocket());
+            hand1.addAll(Board.getBoard());
+            hand2.addAll(player2.getPocket());
+            hand2.addAll(Board.getBoard());
+            //System.out.println("Player1 pocket " + player1.getPocket());
+           // System.out.println("Player2 pocket " + player2.getPocket());
+           // System.out.println("Board is " + Board.getBoard());
+            h1 = HandEval.evaluate(hand1);
+            h2 = HandEval.evaluate(hand2);
+            //System.out.println("Player1 have a " + combs[h1] + ", with weight " + hand1.getWeight());
+           // System.out.println("Player2 have a " + combs[h2] + ", with weight " + hand2.getWeight());
+            if (h1 > h2) {
+                //System.out.println("Winner is Player1");
+                c1++;
+            } else if (h2 > h1) {
+                //System.out.println("Winner is Player2");
+                c2++;
+            } else if ((h2 == h1) && (hand1.getWeight() > hand2.getWeight())) {
+                //System.out.println("Winner is Player1");
+                c1++;
+            } else if ((h2 == h1) && (hand1.getWeight() < hand2.getWeight())) {
+                //System.out.println("Winner is Player2");
+                c2++;
+            } else {
+                //System.out.println("Draw");
+                draw++;
+            }
+            Board.clearBoard();
+            Main.deck.fill();
+            h1 = 0;
+            h2=0;
+            hand1.clearHand();
+            hand2.clearHand();
+        }
+        d2= new Date();
+        db2 = d2.getTime();
+        System.out.println("Player1 has won "+c1);
+        System.out.println("Player2 has won "+c2);
+        System.out.println("Player1 percentage "+(c1%c2));
+        System.out.println("Draws "+draw);
 
-
+        System.out.println(db2-db1);
     }
 
 
