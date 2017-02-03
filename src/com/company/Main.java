@@ -12,7 +12,8 @@ import java.io.IOException;
 
 public class Main {
 
-    public static Hand hand = new Hand();
+    public static Hand hand1 = new Hand();
+    public static Hand hand2 = new Hand();
     public static Deck deck = new Deck();
     public static boolean isFlopSet = false, isPocketSet = false, isTurnSet = false, isRiverSet = false;
     public static Player player1 = new Player("Hero");
@@ -27,8 +28,53 @@ public class Main {
         String[] positions = {"EP", "MP", "LP"};
         Date d1, d2;
         long db1, db2;
+        player1.setPocket(Card.convert("Ah"),Card.convert("5s") );
+        player2.setPocket(Card.generate(), Card.generate());
+        Board.addCards(Card.generate());
+        Board.addCards(Card.generate());
+        Board.addCards(Card.generate());
+        Board.addCards(Card.generate());
+        Board.addCards(Card.generate());
+        hand1.addAll(player1.getPocket());
+        hand1.addAll(Board.getBoard());
+        hand2.addAll(player2.getPocket());
+        hand2.addAll(Board.getBoard());
+        System.out.println("Player1 pocket "+player1.getPocket());
+        System.out.println("Player2 pocket "+player2.getPocket());
+        System.out.println("Board is "+Board.getBoard());
+        System.out.println("Player1 have a "+combs[HandEval.evaluate(hand1)]);
+        System.out.println("Player1 besthand "+HandEval.);
+        System.out.println("Player2 have a "+combs[HandEval.evaluate(hand2)]);
+
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void lookup() throws Exception
     {

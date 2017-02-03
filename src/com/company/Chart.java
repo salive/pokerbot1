@@ -61,8 +61,8 @@ public class Chart {
         range.put(-124, 17); //A6s
         range.put(108, 17);  //QTo
                                 //17%
-        range.put(1212, 1);
-        range.put(1212, 1);
+        range.put(-97, 18); //J9s
+        range.put(127, 18); //A9o
         range.put(1212, 1);
         range.put(1212, 1);
         range.put(1212, 1);
