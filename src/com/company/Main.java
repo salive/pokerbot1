@@ -27,7 +27,7 @@ public class Main {
         String[] positions = {"EP", "MP", "LP"};
         Date d1, d2;
         long db1, db2;
-        lookup();
+
     }
 
     public static void lookup() throws Exception
@@ -94,7 +94,7 @@ public class Main {
         }
 
 
-    public static int Action(Table tb) {
+    /*public static int Action(Table tb) {
         switch (tb.getStage()) {
             case 0:                                    //preflop
                 switch (tb.last_action) {
@@ -165,6 +165,6 @@ public class Main {
         }
         return 0;
 
-    }
+    }*/
 
 }
